@@ -2,7 +2,7 @@
 
 VCBitcoin is an (incomplete) Bitcoin blockchain parser, block explorer and JSON-RPC library for Bitcoin Core, written in C#.
 
-Blockchain parser: Deserializes the entire blockchain and stores the data in a PostgreSQL database. Stale blocks are removed after all blocks are processed. Indexes are created on the most relevant fields.
+Blockchain parser: Deserializes the entire blockchain and stores the data in a PostgreSQL database. Stale blocks are removed after all blocks are processed and indexes are created on the most relevant fields.
 
 Block explorer: A full-featured, command line block explorer that can retrieve balances of addresses, display all inputs and outputs of a transaction, etc. Custom SQL queries can also be executed on the database to extract other useful information and perform statistical analyses, e.g. chart the difficulty of mining over time, determine the percentage of segwit transactions over a certain period of time.
 
