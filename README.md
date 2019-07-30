@@ -1,10 +1,10 @@
 # VCBitcoinhttps://github.com/johnnypham/VCBitcoin
 
-VCBitcoin is a Bitcoin blockchain parser, block explorer and JSON-RPC library for Bitcoin Core.
+VCBitcoin is an (incomplete) Bitcoin blockchain parser, block explorer and JSON-RPC library for Bitcoin Core.
 
 Blockchain parser: Deserializes the entire blockchain and stores the data in a PostgreSQL database. Stale blocks are removed after all blocks are processed. Indexes are created on the most relevant fields.
 
-Block explorer: A fully featured block explorer that can retrieve balances of addresses, display all inputs and outputs of a transaction, and more. Custom SQL queries can also be executed on the database to extract other useful information and perform statistical analyses, e.g. chart the difficulty of mining over time, determine the percentage of segwit transactions over a certain period of time, etc.
+Block explorer: A full-featured, command line block explorer that can retrieve balances of addresses, display all inputs and outputs of a transaction, etc. Custom SQL queries can also be executed on the database to extract other useful information and perform statistical analyses, e.g. chart the difficulty of mining over time, determine the percentage of segwit transactions over a certain period of time, etc.
 
 JSON-RPC client: Many full nodes run on dedicated hardware not suitable for development, e.g. older systems, single-board computers, remote web servers. VCBitcoin provides a simple interface to send RPC queries to a remote or local Bitcoin full node.
 
