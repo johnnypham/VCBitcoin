@@ -1,4 +1,4 @@
-# VCBitcoinhttps://github.com/johnnypham/VCBitcoin
+# VCBitcoin
 
 VCBitcoin is an (incomplete) Bitcoin blockchain parser, block explorer and JSON-RPC library for Bitcoin Core.
 
