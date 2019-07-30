@@ -10,40 +10,50 @@ JSON-RPC client: Many full nodes run on dedicated hardware not suitable for deve
 
 
 
-Example SQL queries
+Example queries
 
 
 
 To get the difficulty of mining:
 
-SELECT TargetDifficulty
-
-    FROM Block
-
-    ORDER BY Timestamp ASC
+	SELECT TargetDifficulty
+	FROM Block
+	ORDER BY Timestamp ASC;
 
 
-To calculate the percentage of transactions that are Segwit in a certain time period:
+To calculate how many segwit transactions have been made:
 
-select count(1) from transaction where blockhash in (select blockhash from block where timestamp > '2018-11-04 02:30 EDT'::timestamptz
+	SELECT COUNT(1) 
+	FROM Transaction 
+	WHERE BlockHash IN 
+	(
+	SELECT BlockHash 
+	FROM Block 
+	WHERE Timestamp > '2017-08-03'::timestamptz 
+		AND Timestamp < NOW()
+	);
 
 
 To get the balance of an address:
 
 First, iterate through all the outputs:
 
-SELECT SUM(Value) 
-FROM OUTPUT 
-WHERE address = 'mwx4oxbWUGXXSSrcipRPAkRSoYi7FFHHia'
+	SELECT SUM(Value) 
+	FROM OUTPUT 
+	WHERE Address = 'mwx4oxbWUGXXSSrcipRPAkRSoYi7FFHHia';
 
 Then, find any outputs which have been used as inputs in another transaction:
 
-SELECT SUM(Value) 
-FROM Output o
-WHERE address = 'mwx4oxbWUGXXSSrcipRPAkRSoYi7FFHHia' AND 
-EXISTS (SELECT TransactionID, Vout FROM Input i WHERE
-	   o.TransactionID = i.TransactionID AND 
-	   o.Index = i.Vout)
+	SELECT SUM(Value) 
+	FROM Output o
+	WHERE Address = 'mwx4oxbWUGXXSSrcipRPAkRSoYi7FFHHia' 
+		AND EXISTS 
+		(
+		SELECT TransactionID, Vout 
+		FROM Input i 
+		WHERE o.TransactionID = i.TransactionID 
+			AND o.Index = i.Vout
+	   );
 
 Subtract the second sum from the first sum to get the final balance.
 
