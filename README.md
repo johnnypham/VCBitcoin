@@ -39,7 +39,7 @@ To get the balance of an address:
 First, iterate through all the outputs:
 
 	SELECT SUM(Value) 
-	FROM OUTPUT 
+	FROM Output
 	WHERE Address = 'mwx4oxbWUGXXSSrcipRPAkRSoYi7FFHHia';
 
 Then, find any outputs which have been used as inputs in another transaction:
